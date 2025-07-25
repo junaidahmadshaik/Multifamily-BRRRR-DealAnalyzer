@@ -1,0 +1,60 @@
+# -------- Qt Creator Specific --------
+*.pro.user
+*.pro.user.*
+*.autosave
+*.qmake.stash
+
+# -------- Compiled Object Files --------
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.exe
+*.out
+
+# -------- Qt UI/Build Files --------
+Makefile*
+*.qrc.depends
+*.moc
+*.rcc
+*.cpp~
+*.h~
+*.bak
+*.tmp
+*.user
+*.ncb
+*.sdf
+*.suo
+*.idb
+*.pdb
+
+# -------- CMake / QMake / Build Artifacts --------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+*.manifest
+*.tlog
+*.ilk
+
+
+
+# -------- IDE/Editor Folders --------
+.idea/
+.vscode/
+*.DS_Store
+*.log
+*.swp
+
+# -------- WebAssembly Specific --------
+*.wasm
+*.html
+*.js
+*.map
+qtloader.js
+
+# -------- Ignore backups and hidden files --------
+*~
+.*.swp
+*.orig
