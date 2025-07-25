@@ -185,7 +185,3 @@ Contributions are welcome! If you have suggestions for improvements, bug reports
 
 ---
 
-## License
-
-This project is licensed under the [Your Chosen License Name] License - see the [LICENSE.md](LICENSE.md) file for details.
-*(Replace `[Your Chosen License Name]` and link to your actual license file if you have one, e.g., `LICENSE.md` or `LICENSE.txt`)*
