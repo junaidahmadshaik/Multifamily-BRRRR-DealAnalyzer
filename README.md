@@ -15,7 +15,6 @@ This is a cross-platform financial analysis tool designed to help real estate in
 - [Getting Started](#getting-started)
 - [How to Use](#how-to-use)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
