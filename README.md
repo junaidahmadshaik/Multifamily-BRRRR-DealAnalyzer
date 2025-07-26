@@ -144,8 +144,6 @@ The tool provides insights into various crucial real estate investment metrics, 
 
 This guide explains how to **build and run the Multifamily BRRRR Deal Analyzer** for both **desktop** and **web (WASM)** environments using Qt 6.7.3 and Emscripten.
 
----
-
 ### For Desktop (Windows - MinGW 64-bit)
 
 #### Prerequisites:
@@ -170,16 +168,12 @@ This guide explains how to **build and run the Multifamily BRRRR Deal Analyzer**
    - Click `Build > Build Project`.
    - Then click `Run`. The app will launch with the GUI interface.
 
----
-
 ### For Web (WebAssembly via Emscripten)
 
 #### Prerequisites:
 - Qt 6.7.3 with **WebAssembly single-threaded** kit.
 - **Emscripten SDK 3.1.50** (manually installed at `C:\Users\junai\Desktop\emsdk`).
 - A simple HTTP server for local testing (e.g., Python’s `http.server`).
-
----
 
 ### Setup Emscripten SDK (Manual Installation)
 
@@ -201,8 +195,6 @@ If you already cloned the repo, follow these steps to setup `emsdk`:
    emcc (Emscripten gcc/clang-like replacement) 3.1.50
    ```
 
----
-
 ### Build for Web using Qt Creator
 
 1. **Open `DealAnalyzer.pro` in Qt Creator.**
@@ -222,8 +214,6 @@ If you already cloned the repo, follow these steps to setup `emsdk`:
 
 > Note: WebAssembly apps run best on modern browsers like **Chrome** or **Edge**. Firefox may need tuning for Qt WASM.
 
----
-
 ### Output Files Summary
 
 | File Name             | Purpose                        |
@@ -233,7 +223,6 @@ If you already cloned the repo, follow these steps to setup `emsdk`:
 | `DealAnalyzer.wasm`   | WebAssembly binary (core app)  |
 | `qtloader.js`         | Qt-specific loader script      |
 
----
 
 ### Optional: Optimize WebAssembly Build (Advanced)
 
