@@ -142,30 +142,116 @@ The tool provides insights into various crucial real estate investment metrics, 
 
 ## Getting Started
 
-*(You might want to add instructions here on how to build and run the application, especially for desktop, and how to access the web version if deployed.)*
+This guide explains how to **build and run the Multifamily BRRRR Deal Analyzer** for both **desktop** and **web (WASM)** environments using Qt 6.7.3 and Emscripten.
 
-**For Desktop (Windows/macOS/Linux):**
+---
 
-1.  **Prerequisites:** Ensure you have Qt 6.7.3 and a compatible C++ compiler installed.
-2.  **Clone the Repository:**
-    ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
-    ```
-3.  **Build with Qt Creator:** Open the `.pro` file in Qt Creator and build the project.
-4.  **Run:** Execute the compiled application.
+### For Desktop (Windows - MinGW 64-bit)
 
-**For Web (WebAssembly):**
+#### Prerequisites:
+- [Qt 6.7.3](https://www.qt.io/download) with **MinGW 64-bit** kit installed.
+- Qt Creator (recommended for ease of building and deploying).
+- CMake (Auto-detected by Qt Creator or installed manually from [cmake.org](https://cmake.org/)).
 
-1.  **Prerequisites:** Emscripten SDK installed and configured.
-2.  **Build with Emscripten:**
-    ```bash
-    # (Example command - actual command might vary based on your build system)
-    emcmake cmake .
-    emmake make
-    ```
-3.  **Serve:** Host the generated HTML, JS, and WASM files on a web server (e.g., `python -m http.server` for local testing).
-4.  **Access in Browser:** Open the hosted HTML file in your web browser.
+#### Steps:
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/junaidahmadshaik/Multifamily-BRRRR-DealAnalyzer.git
+   cd Multifamily-BRRRR-DealAnalyzer
+   ```
+
+2. **Open the Project in Qt Creator:**
+   - Open `DealAnalyzer.pro` using Qt Creator.
+   - Select the **Desktop MinGW 64-bit** kit.
+   - Let Qt auto-detect paths and kits.
+
+3. **Build and Run:**
+   - Click `Build > Build Project`.
+   - Then click `Run`. The app will launch with the GUI interface.
+
+---
+
+### For Web (WebAssembly via Emscripten)
+
+#### Prerequisites:
+- Qt 6.7.3 with **WebAssembly single-threaded** kit.
+- **Emscripten SDK 3.1.50** (manually installed at `C:\Users\junai\Desktop\emsdk`).
+- A simple HTTP server for local testing (e.g., Python’s `http.server`).
+
+---
+
+### Setup Emscripten SDK (Manual Installation)
+
+If you already cloned the repo, follow these steps to setup `emsdk`:
+
+1. **Open Command Prompt and Run:**
+   ```bash
+   cd C:\Users\junai\Desktop\emsdk
+   emsdk activate 3.1.50
+   emsdk_env.bat
+   ```
+
+2. **Test the installation:**
+   ```bash
+   emcc --version
+   ```
+   You should see output like:
+   ```
+   emcc (Emscripten gcc/clang-like replacement) 3.1.50
+   ```
+
+---
+
+### Build for Web using Qt Creator
+
+1. **Open `DealAnalyzer.pro` in Qt Creator.**
+
+2. **Select the WebAssembly Kit:**
+   - Choose `Qt 6.7.3 WebAssembly (Single-Threaded)`.
+
+3. **Build the Project:**
+   - Go to `Build > Build Project`.
+   - The build output folder will include:
+     ```
+     DealAnalyzer.html
+     DealAnalyzer.js
+     DealAnalyzer.wasm
+     qtloader.js
+     ```
+
+> Note: WebAssembly apps run best on modern browsers like **Chrome** or **Edge**. Firefox may need tuning for Qt WASM.
+
+---
+
+### Output Files Summary
+
+| File Name             | Purpose                        |
+|-----------------------|--------------------------------|
+| `DealAnalyzer.html`   | Main launcher page             |
+| `DealAnalyzer.js`     | JavaScript glue code           |
+| `DealAnalyzer.wasm`   | WebAssembly binary (core app)  |
+| `qtloader.js`         | Qt-specific loader script      |
+
+---
+
+### Optional: Optimize WebAssembly Build (Advanced)
+
+To reduce load time and improve performance:
+
+- **Enable size optimization** in `.pro` file:
+  ```pro
+  QMAKE_LFLAGS += -Os --closure 1 --llvm-lto 1
+  ```
+
+- **Compress `.wasm` file** using Brotli or Gzip on your deployment server:
+  ```bash
+  brotli DealAnalyzer.wasm -o DealAnalyzer.wasm.br
+  # or
+  gzip -k DealAnalyzer.wasm
+  ```
+
+> These steps are typically done during deployment (e.g., on Ubuntu server using Nginx with Brotli module).
 
 ---
 
